@@ -32,12 +32,21 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static uploads
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// Routes Mounting
+// Routes Mounting (Supports both /api/* and root paths)
 app.use('/api/health', healthRoutes);
+app.use('/health', healthRoutes);
+
 app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
+
 app.use('/api/documents', documentRoutes);
+app.use('/documents', documentRoutes);
+
 app.use('/api/chat', chatRoutes);
+app.use('/chat', chatRoutes);
+
 app.use('/api/rag', ragRoutes);
+app.use('/rag', ragRoutes);
 
 // Root route
 app.get('/', (req, res) => {
