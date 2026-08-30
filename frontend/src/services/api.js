@@ -1,7 +1,16 @@
 import axios from 'axios';
 
+const getBaseURL = () => {
+  let url = import.meta.env.VITE_API_URL || '/api';
+  url = url.replace(/\/+$/, '');
+  if (!url.endsWith('/api') && !url.startsWith('/api')) {
+    url += '/api';
+  }
+  return url;
+};
+
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: getBaseURL(),
 });
 
 // Interceptor to add Bearer Token
