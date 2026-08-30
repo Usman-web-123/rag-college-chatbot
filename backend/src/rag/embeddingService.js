@@ -41,10 +41,19 @@ const generateEmbedding = async (text) => {
   if (apiKey && apiKey.trim().length > 0 && apiKey !== 'your_gemini_api_key_here') {
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: 'text-embedding-004' });
-      const result = await model.embedContent(text);
-      if (result && result.embedding && result.embedding.values) {
-        return result.embedding.values;
+      let model;
+      try {
+        model = genAI.getGenerativeModel({ model: 'text-embedding-004' });
+        const result = await model.embedContent(text);
+        if (result && result.embedding && result.embedding.values) {
+          return result.embedding.values;
+        }
+      } catch (err1) {
+        model = genAI.getGenerativeModel({ model: 'embedding-001' });
+        const result = await model.embedContent(text);
+        if (result && result.embedding && result.embedding.values) {
+          return result.embedding.values;
+        }
       }
     } catch (error) {
       console.warn(`[Embedding Service Warning]: Gemini Embedding API error (${error.message}). Falling back to local vector generator.`);
