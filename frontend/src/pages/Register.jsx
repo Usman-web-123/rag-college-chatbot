@@ -27,7 +27,7 @@ const Register = () => {
         navigate('/chat');
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed. Try again.');
+      setError(err.response?.data?.message || err.message || 'Registration failed. Try again.');
     } finally {
       setLoading(false);
     }
