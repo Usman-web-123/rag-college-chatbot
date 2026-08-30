@@ -2,11 +2,17 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/college-chatbot');
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) {
+      console.error('[MongoDB Error]: MONGODB_URI environment variable is not defined!');
+      return;
+    }
+    const conn = await mongoose.connect(mongoUri, {
+      serverSelectionTimeoutMS: 10000,
+    });
     console.log(`[MongoDB Connected]: ${conn.connection.host}`);
   } catch (error) {
     console.error(`[MongoDB Connection Error]: ${error.message}`);
-    console.warn(`[MongoDB Warning]: Running without persistent DB or check your MongoDB service.`);
   }
 };
 
