@@ -3,18 +3,21 @@ import axios from 'axios';
 const getBaseURL = () => {
   let url = import.meta.env.VITE_API_URL || '/api';
   url = url.replace(/\/+$/, '');
-  if (!url.endsWith('/api') && !url.startsWith('/api')) {
+  if (!url.endsWith('/api')) {
     url += '/api';
   }
-  return url;
+  return url + '/';
 };
 
 const API = axios.create({
   baseURL: getBaseURL(),
 });
 
-// Interceptor to add Bearer Token
+// Interceptor to strip leading slash and add Bearer Token
 API.interceptors.request.use((config) => {
+  if (config.url && config.url.startsWith('/')) {
+    config.url = config.url.substring(1);
+  }
   const token = localStorage.getItem('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
