@@ -42,7 +42,7 @@ const Register = () => {
             <Bot className="w-7 h-7" />
           </div>
           <h2 className="text-2xl font-bold text-white">Create Account</h2>
-          <p className="text-xs text-slate-400 mt-1">Join CampusRAG Knowledge Portal</p>
+          <p className="text-xs text-slate-400 mt-1">Join CampusRAG • Instant access upon registration (No admin approval required)</p>
         </div>
 
         {error && (

@@ -40,7 +40,7 @@ const Login = () => {
             <Bot className="w-7 h-7" />
           </div>
           <h2 className="text-2xl font-bold text-white">Welcome Back</h2>
-          <p className="text-xs text-slate-400 mt-1">Sign in to access your AI College Chatbot assistant</p>
+          <p className="text-xs text-slate-400 mt-1">Sign in for instant access to your AI College Assistant (No admin approval required)</p>
         </div>
 
         {error && (
