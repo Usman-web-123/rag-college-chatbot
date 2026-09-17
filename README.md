@@ -1,5 +1,5 @@
 # 🎓 CampusRAG - Full-Stack AI-Powered RAG College Chatbot
-
+https://rag-college-chatbot-mg4esb602-usman-web-123s-projects.vercel.app/
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-green.svg)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-v4.19-blue.svg)](https://expressjs.com/)
 [![React](https://img.shields.io/badge/React-v18.3-cyan.svg)](https://reactjs.org/)
